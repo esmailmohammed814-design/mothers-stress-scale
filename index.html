@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="مقياس الضغوط النفسية لدى الأمهات"
+    >
+
+    <title>مقياس الضغوط النفسية لدى الأمهات</title>
+
+    <!-- Google Font -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+    <!-- Decorative Background -->
+    <div class="background-shape shape-one"></div>
+    <div class="background-shape shape-two"></div>
+
+    <main class="app-container">
+
+        <!-- ======================================================
+             Introduction Page
+        ======================================================= -->
+        <section
+            id="introPage"
+            class="page active"
+        >
+
+            <div class="main-card intro-card">
+
+                <div class="logo-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path
+                            d="M12 21s-7-4.35-9.5-8.35C.5 9.45 2.15 5.5 5.7 5.05 7.85 4.8 9.55 6 12 8.35 14.45 6 16.15 4.8 18.3 5.05c3.55.45 5.2 4.4 3.2 7.6C19 16.65 12 21 12 21z"
+                        />
+                    </svg>
+                </div>
+
+                <div class="intro-heading">
+
+                    <span class="small-label">
+                        مقياس نفسي
+                    </span>
+
+                    <h1>
+                        مقياس الضغوط النفسية
+                        <span>لدى الأمهات</span>
+                    </h1>
+
+                    <div class="doctor-name">
+                        الدكتورة/ أسماء محمد عويس
+                    </div>
+
+                    <p class="intro-description">
+                        يرجى إدخال البيانات التالية أولاً، ثم الإجابة عن جميع
+                        العبارات وفقاً لما يعبر عن حالتك بصورة أقرب.
+                    </p>
+
+                </div>
+
+                <form
+                    id="userInfoForm"
+                    class="user-form"
+                    autocomplete="off"
+                >
+
+                    <!-- Age -->
+                    <div class="form-group">
+
+                        <label for="age">
+                            العمر
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-5 0-9 2.5-9 5.5V22h18v-2.5C21 16.5 17 14 12 14Z"
+                                />
+                            </svg>
+
+                            <input
+                                type="number"
+                                id="age"
+                                min="1"
+                                max="120"
+                                placeholder="أدخلي العمر"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- Social Status -->
+                    <div class="form-group">
+
+                        <label for="socialStatus">
+                            الحالة الاجتماعية
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3ZM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3Zm8 2c-2 0-6 1-6 3v3h12v-3c0-2-4-3-6-3ZM8 13c-2.33 0-7 1.17-7 3.5V19h7v-3c0-.85.33-1.62.89-2.28A7.95 7.95 0 0 0 8 13Z"
+                                />
+                            </svg>
+
+                            <input
+                                type="text"
+                                id="socialStatus"
+                                placeholder="مثال: متزوجة"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <!-- Education -->
+                    <div class="form-group">
+
+                        <label for="education">
+                            المستوى التعليمي
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 3 1 9l4 2.18v6L12 21l7-3.82v-6L21 10v7h2V9L12 3Zm0 2.27L18.85 9 12 12.73 5.15 9 12 5.27ZM7 12.27l5 2.73 5-2.73v3.72l-5 2.73-5-2.73v-3.72Z"
+                                />
+                            </svg>
+
+                            <input
+                                type="text"
+                                id="education"
+                                placeholder="مثال: مؤهل جامعي"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="startBtn"
+                        class="primary-button"
+                        disabled
+                    >
+                        <span>التالي</span>
+
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="m15.5 5-7 7 7 7"
+                            />
+                        </svg>
+                    </button>
+
+                </form>
+
+                <p class="required-note">
+                    جميع البيانات المطلوبة يجب إدخالها للمتابعة
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             Questions Page
+        ======================================================= -->
+        <section
+            id="questionsPage"
+            class="page"
+        >
+
+            <div class="main-card question-card">
+
+                <!-- Top -->
+                <header class="question-header">
+
+                    <div class="question-header-row">
+
+                        <div>
+
+                            <span
+                                id="sectionNumber"
+                                class="section-number"
+                            >
+                                أولاً
+                            </span>
+
+                            <h2 id="sectionTitle">
+                                الضغوط الانفعالية
+                            </h2>
+
+                        </div>
+
+                        <div
+                            id="progressText"
+                            class="progress-text"
+                        >
+                            1 / 40
+                        </div>
+
+                    </div>
+
+                    <!-- Progress -->
+                    <div class="progress-container">
+
+                        <div class="progress-track">
+                            <div
+                                id="progressBar"
+                                class="progress-bar"
+                            ></div>
+                        </div>
+
+                        <span id="progressPercentage">
+                            0%
+                        </span>
+
+                    </div>
+
+                </header>
+
+
+                <!-- Question -->
+                <div
+                    id="questionContent"
+                    class="question-content"
+                >
+
+                    <div class="question-counter">
+                        السؤال
+                        <span id="questionNumber">
+                            1
+                        </span>
+                    </div>
+
+                    <h3
+                        id="questionText"
+                        class="question-text"
+                    ></h3>
+
+                    <p class="answer-help">
+                        اختاري الإجابة الأقرب إلى حالتك
+                    </p>
+
+
+                    <!-- Answers -->
+                    <div
+                        id="answersContainer"
+                        class="answers-container"
+                    >
+
+                        <button
+                            type="button"
+                            class="answer-option"
+                            data-value="1"
+                        >
+
+                            <span class="answer-radio">
+                                <span></span>
+                            </span>
+
+                            <span class="answer-info">
+
+                                <strong>
+                                    نادراً
+                                </strong>
+
+                                <small>
+                                    لا يحدث غالباً
+                                </small>
+
+                            </span>
+
+                            <span class="answer-score">
+                                1
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="answer-option"
+                            data-value="2"
+                        >
+
+                            <span class="answer-radio">
+                                <span></span>
+                            </span>
+
+                            <span class="answer-info">
+
+                                <strong>
+                                    أحياناً
+                                </strong>
+
+                                <small>
+                                    يحدث في بعض الأحيان
+                                </small>
+
+                            </span>
+
+                            <span class="answer-score">
+                                2
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="answer-option"
+                            data-value="3"
+                        >
+
+                            <span class="answer-radio">
+                                <span></span>
+                            </span>
+
+                            <span class="answer-info">
+
+                                <strong>
+                                    دائماً
+                                </strong>
+
+                                <small>
+                                    يحدث بصورة مستمرة
+                                </small>
+
+                            </span>
+
+                            <span class="answer-score">
+                                3
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Navigation -->
+                <div class="navigation-buttons">
+
+                    <button
+                        type="button"
+                        id="prevBtn"
+                        class="secondary-button"
+                    >
+                        <svg viewBox="0 0 24 24">
+                            <path d="m8.5 5 7 7-7 7"/>
+                        </svg>
+
+                        السابق
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="nextBtn"
+                        class="primary-button next-question-btn"
+                        disabled
+                    >
+                        <span id="nextBtnText">
+                            التالي
+                        </span>
+
+                        <svg viewBox="0 0 24 24">
+                            <path d="m15.5 5-7 7 7 7"/>
+                        </svg>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================================
+             Result Page
+        ======================================================= -->
+        <section
+            id="resultPage"
+            class="page"
+        >
+
+            <div class="main-card result-card">
+
+                <div class="result-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M9.55 18.55 3.7 12.7l1.4-1.4 4.45 4.45L18.9 6.4l1.4 1.4-10.75 10.75Z"
+                        />
+                    </svg>
+
+                </div>
+
+
+                <span class="result-label">
+                    اكتمل المقياس بنجاح
+                </span>
+
+                <h2>
+                    نتيجة الاختبار
+                </h2>
+
+                <p class="result-intro">
+                    مجموع الدرجات التي حصلتِ عليها هو
+                </p>
+
+
+                <div class="score-circle">
+
+                    <span
+                        id="finalScore"
+                        class="final-score"
+                    >
+                        0
+                    </span>
+
+                    <small>
+                        من 120
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="resultStatus"
+                    class="result-status"
+                >
+                    ضغوط منخفضة
+                </div>
+
+
+                <p
+                    id="resultDescription"
+                    class="result-description"
+                ></p>
+
+
+                <!-- User summary -->
+                <div class="user-summary">
+
+                    <div class="summary-item">
+
+                        <span>
+                            العمر
+                        </span>
+
+                        <strong id="summaryAge">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <span>
+                            الحالة الاجتماعية
+                        </span>
+
+                        <strong id="summarySocial">
+                            -
+                        </strong>
+
+                    </div>
+
+                    <div class="summary-item">
+
+                        <span>
+                            المستوى التعليمي
+                        </span>
+
+                        <strong id="summaryEducation">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="save-message">
+
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M11 17h2v-6h-2v6Zm0-8h2V7h-2v2Zm1 13a10 10 0 1 1 0-20 10 10 0 0 1 0 20Z"
+                        />
+                    </svg>
+
+                    <p>
+                        قم بالحفاظ على نتيجة الاختبار لإرسالها للدكتور.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="restartBtn"
+                    class="secondary-button restart-button"
+                >
+                    إعادة الاختبار
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
