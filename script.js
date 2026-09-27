@@ -4,9 +4,6 @@
 
 const sections = [
 
-    // =====================================================
-    // 1 - Emotional Stress
-    // =====================================================
     {
         number: "أولاً",
         title: "الضغوط الانفعالية",
@@ -32,13 +29,11 @@ const sections = [
             "أصبحت أعاني من العصبية الزائدة بسبب سلوكيات طفلي المتكررة.",
 
             "حياتي أصبحت مليئة بالتوتر منذ اكتشاف حالة طفلي."
+
         ]
     },
 
 
-    // =====================================================
-    // 2 - Social Stress
-    // =====================================================
     {
         number: "ثانياً",
         title: "الضغوط الاجتماعية",
@@ -64,13 +59,11 @@ const sections = [
             "أخفق في وجود من أشاركه مشاعري حول الضغوط التي أواجهها في رعاية طفلي.",
 
             "أتعرض لانتقادات من الآخرين حول أسلوب تربيتي لطفلي."
+
         ]
     },
 
 
-    // =====================================================
-    // 3 - Economic Stress
-    // =====================================================
     {
         number: "ثالثاً",
         title: "الضغوط الاقتصادية",
@@ -96,13 +89,11 @@ const sections = [
             "أواجه صعوبة في الادخار بسبب مصاريف طفلي.",
 
             "أشعر أن الالتزامات المالية الخاصة بطفلي تفوق قدرتي."
+
         ]
     },
 
 
-    // =====================================================
-    // 4 - Family Stress
-    // =====================================================
     {
         number: "رابعاً",
         title: "الضغوط الأسرية",
@@ -128,6 +119,7 @@ const sections = [
             "تقل الأنشطة الأسرية المشتركة بسبب ظروف طفلي.",
 
             "أشعر أن حياة الأسرة تدور بالكامل حول احتياجات طفلي."
+
         ]
     }
 
@@ -135,7 +127,7 @@ const sections = [
 
 
 /* =========================================================
-   Convert sections into one question array
+   Convert Sections To One Question Array
 ========================================================= */
 
 const allQuestions = [];
@@ -149,9 +141,9 @@ sections.forEach((section, sectionIndex) => {
 
                 text: question,
 
-                sectionIndex: sectionIndex,
+                sectionIndex,
 
-                questionIndex: questionIndex
+                questionIndex
 
             });
 
@@ -254,6 +246,9 @@ const summaryEducation =
 const restartBtn =
     document.getElementById("restartBtn");
 
+const printBtn =
+    document.getElementById("printBtn");
+
 
 /* =========================================================
    Application State
@@ -291,9 +286,15 @@ function validateIntroForm() {
         educationInput.value.trim();
 
 
+    const ageNumber =
+        Number(age);
+
+
     const validAge =
         age !== "" &&
-        Number(age) > 0;
+        Number.isFinite(ageNumber) &&
+        ageNumber >= 1 &&
+        ageNumber <= 120;
 
 
     const isValid =
@@ -302,8 +303,8 @@ function validateIntroForm() {
         education !== "";
 
 
-    startBtn.disabled = !isValid;
-
+    startBtn.disabled =
+        !isValid;
 }
 
 
@@ -312,10 +313,12 @@ ageInput.addEventListener(
     validateIntroForm
 );
 
+
 socialStatusInput.addEventListener(
     "input",
     validateIntroForm
 );
+
 
 educationInput.addEventListener(
     "input",
@@ -332,7 +335,6 @@ userInfoForm.addEventListener(
     function (event) {
 
         event.preventDefault();
-
 
         validateIntroForm();
 
@@ -408,6 +410,11 @@ function renderQuestion() {
         allQuestions[currentQuestionIndex];
 
 
+    if (!currentQuestion) {
+        return;
+    }
+
+
     const currentSection =
         sections[currentQuestion.sectionIndex];
 
@@ -430,7 +437,7 @@ function renderQuestion() {
         currentQuestion.text;
 
 
-    /* Total Progress */
+    /* Progress */
 
     const questionPosition =
         currentQuestionIndex + 1;
@@ -457,16 +464,18 @@ function renderQuestion() {
         `${progress}%`;
 
 
-    /* Clear old selection */
+    /* Clear selection */
 
     answerOptions.forEach((option) => {
 
-        option.classList.remove("selected");
+        option.classList.remove(
+            "selected"
+        );
 
     });
 
 
-    /* Restore previously selected answer */
+    /* Restore previous answer */
 
     const selectedAnswer =
         answers[currentQuestionIndex];
@@ -491,13 +500,13 @@ function renderQuestion() {
     }
 
 
-    /* Button validation */
+    /* Next Button */
 
     nextBtn.disabled =
         selectedAnswer === null;
 
 
-    /* Previous button */
+    /* Previous */
 
     if (currentQuestionIndex === 0) {
 
@@ -530,7 +539,7 @@ function renderQuestion() {
     }
 
 
-    /* Question Animation */
+    /* Animation */
 
     questionContent.classList.remove(
         "animate-in"
@@ -563,8 +572,6 @@ answerOptions.forEach((option) => {
                 );
 
 
-            /* Remove old */
-
             answerOptions.forEach(
                 (item) => {
 
@@ -576,22 +583,17 @@ answerOptions.forEach((option) => {
             );
 
 
-            /* Select current */
-
             this.classList.add(
                 "selected"
             );
 
 
-            /* Save answer */
-
             answers[currentQuestionIndex] =
                 value;
 
 
-            /* Enable Next */
-
-            nextBtn.disabled = false;
+            nextBtn.disabled =
+                false;
 
         }
     );
@@ -607,8 +609,6 @@ nextBtn.addEventListener(
     "click",
     function () {
 
-        /* Cannot continue without answer */
-
         if (
             answers[currentQuestionIndex] ===
             null
@@ -618,8 +618,6 @@ nextBtn.addEventListener(
 
         }
 
-
-        /* Last Question */
 
         if (
             currentQuestionIndex ===
@@ -649,7 +647,9 @@ prevBtn.addEventListener(
     "click",
     function () {
 
-        if (currentQuestionIndex > 0) {
+        if (
+            currentQuestionIndex > 0
+        ) {
 
             currentQuestionIndex--;
 
@@ -662,7 +662,7 @@ prevBtn.addEventListener(
 
 
 /* =========================================================
-   Calculate Result
+   Calculate Score
 ========================================================= */
 
 function calculateScore() {
@@ -685,18 +685,21 @@ function calculateScore() {
 
 function showResult() {
 
-    /* Make sure every question is answered */
-
     const unansweredQuestion =
         answers.findIndex(
-            answer => answer === null
+            answer =>
+                answer === null
         );
 
 
-    if (unansweredQuestion !== -1) {
+    if (
+        unansweredQuestion !== -1
+    ) {
 
         currentQuestionIndex =
             unansweredQuestion;
+
+        showPage(questionsPage);
 
         renderQuestion();
 
@@ -712,12 +715,10 @@ function showResult() {
     showPage(resultPage);
 
 
-    /* Animate score */
-
     animateScore(score);
 
 
-    /* User information */
+    /* User Information */
 
     summaryAge.textContent =
         userData.age;
@@ -729,7 +730,7 @@ function showResult() {
         userData.education;
 
 
-    /* Remove old states */
+    /* Remove Old States */
 
     resultStatus.classList.remove(
         "low",
@@ -745,7 +746,10 @@ function showResult() {
     */
 
 
-    if (score >= 40 && score <= 66) {
+    if (
+        score >= 40 &&
+        score <= 66
+    ) {
 
         resultStatus.textContent =
             "ضغوط منخفضة";
@@ -757,8 +761,10 @@ function showResult() {
         resultDescription.textContent =
             "تشير النتيجة وفقاً لطريقة تصحيح المقياس إلى مستوى منخفض من الضغوط النفسية.";
 
+    }
 
-    } else if (
+
+    else if (
         score >= 67 &&
         score <= 93
     ) {
@@ -773,8 +779,10 @@ function showResult() {
         resultDescription.textContent =
             "تشير النتيجة وفقاً لطريقة تصحيح المقياس إلى مستوى متوسط من الضغوط النفسية.";
 
+    }
 
-    } else if (
+
+    else if (
         score >= 94 &&
         score <= 120
     ) {
@@ -800,7 +808,8 @@ function showResult() {
 
 function animateScore(targetScore) {
 
-    finalScore.textContent = "0";
+    finalScore.textContent =
+        "0";
 
 
     let currentScore = 0;
@@ -813,39 +822,71 @@ function animateScore(targetScore) {
 
     const steps =
         Math.ceil(
-            duration / frameRate
+            duration /
+            frameRate
         );
 
 
     const increment =
-        targetScore / steps;
+        targetScore /
+        steps;
 
 
     const counter =
-        setInterval(() => {
+        setInterval(
+            () => {
 
-            currentScore += increment;
+                currentScore +=
+                    increment;
 
 
-            if (
-                currentScore >=
-                targetScore
-            ) {
+                if (
+                    currentScore >=
+                    targetScore
+                ) {
+
+                    finalScore.textContent =
+                        targetScore;
+
+                    clearInterval(
+                        counter
+                    );
+
+                    return;
+
+                }
+
 
                 finalScore.textContent =
-                    targetScore;
+                    Math.floor(
+                        currentScore
+                    );
 
-                clearInterval(counter);
+            },
+            frameRate
+        );
 
-                return;
-
-            }
+}
 
 
-            finalScore.textContent =
-                Math.floor(currentScore);
+/* =========================================================
+   Print Result
+========================================================= */
 
-        }, frameRate);
+if (printBtn) {
+
+    printBtn.addEventListener(
+        "click",
+        function () {
+
+            /*
+             * التأكد من تحديث النتيجة قبل الطباعة
+             */
+
+            window.print();
+
+        }
+    );
 
 }
 
@@ -869,7 +910,7 @@ restartBtn.addEventListener(
         }
 
 
-        /* Reset answers */
+        /* Reset Answers */
 
         answers =
             new Array(
@@ -877,10 +918,11 @@ restartBtn.addEventListener(
             ).fill(null);
 
 
-        currentQuestionIndex = 0;
+        currentQuestionIndex =
+            0;
 
 
-        /* Clear inputs */
+        /* Clear Inputs */
 
         ageInput.value = "";
 
@@ -888,6 +930,8 @@ restartBtn.addEventListener(
 
         educationInput.value = "";
 
+
+        /* Reset User Data */
 
         userData = {
 
@@ -900,8 +944,31 @@ restartBtn.addEventListener(
         };
 
 
-        startBtn.disabled = true;
+        /* Reset Button */
 
+        startBtn.disabled =
+            true;
+
+
+        /* Reset Result */
+
+        finalScore.textContent =
+            "0";
+
+        resultStatus.textContent =
+            "ضغوط منخفضة";
+
+        resultStatus.classList.remove(
+            "low",
+            "medium",
+            "high"
+        );
+
+        resultDescription.textContent =
+            "";
+
+
+        /* Return */
 
         showPage(introPage);
 
@@ -917,12 +984,6 @@ document.addEventListener(
     "keydown",
     function (event) {
 
-        /*
-            1 = Rarely
-            2 = Sometimes
-            3 = Always
-        */
-
         if (
             !questionsPage.classList.contains(
                 "active"
@@ -933,6 +994,12 @@ document.addEventListener(
 
         }
 
+
+        /*
+            1 = نادراً
+            2 = أحياناً
+            3 = دائماً
+        */
 
         const allowedKeys =
             ["1", "2", "3"];
@@ -972,3 +1039,10 @@ document.addEventListener(
 
     }
 );
+
+
+/* =========================================================
+   Initial State
+========================================================= */
+
+validateIntroForm();
